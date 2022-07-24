@@ -1,7 +1,7 @@
 
-# Progressive Multi-Granularity Training
+# Progressive Region Enhancement Network (PRENet)
  
-Code release for Fine-Grained Visual Classiﬁcation via Progressive Multi-Granularity Training of Jigsaw Patches (ECCV2020)
+Code release for Large Scale Visual Food Recognition
  
 ### Requirement
  
@@ -11,52 +11,30 @@ PyTorch >= 1.3.1
 
 torchvision >= 0.4.2
 
+dropblock
+
 ### Training
 
-1. Download datatsets for FGVC (e.g. CUB-200-2011, Standford Cars, FGVC-Aircraft, etc) and organize the structure as follows:
-```
-dataset
-├── train
-│   ├── class_001
-|   |      ├── 1.jpg
-|   |      ├── 2.jpg
-|   |      └── ...
-│   ├── class_002
-|   |      ├── 1.jpg
-|   |      ├── 2.jpg
-|   |      └── ...
-│   └── ...
-└── test
-    ├── class_001
-    |      ├── 1.jpg
-    |      ├── 2.jpg
-    |      └── ...
-    ├── class_002
-    |      ├── 1.jpg
-    |      ├── 2.jpg
-    |      └── ...
-    └── ...
-```
+1. 
 
 2. Train from scratch with ``train.py``.
 
+### Inference
 
-### Citation
- 
-Please cite our paper if you use PMG in your work.
-```
-@InProceedings{du2020fine,
-  title={Fine-Grained Visual Classification via Progressive Multi-Granularity Training of Jigsaw Patches},
-  author={Du, Ruoyi and Chang, Dongliang and Bhunia, Ayan Kumar and Xie, Jiyang and Ma, Zhanyu and Song, Yi-Zhe and Guo, Jun},
-  booktitle = {European Conference on Computer Vision},
-  year={2020}
-}
+1. Download the pretrained model on Food2k [here](https://pan.baidu.com/s/1HMvBf0F-FpMIMPtuQtUE8Q)(Code: o0nj)
 
-```
+### Pretrained model
+
+|  CNN   | link  |
+|  ----  | ----  |
+| resnet50  | [here](https://pan.baidu.com/s/1WY7VsCBTJt2mL9n3Gdl8Mg)(Code: 5eay) |
+| resnet101  | [here](https://pan.baidu.com/s/1mEO7KyJFHrkpB5G0Aj6oWw)(Code: yv1o) |
+| resnet152  | [here](https://pan.baidu.com/s/1-3LikXkDEvbxQur6n-FUJw)(Code: 22zw) |
+| densenet161  | [here](https://pan.baidu.com/s/1UllqjTJMAQEnGFVgzf6-nQ)(Code: bew5) |
+| inception_resnet_v2  | [here](https://pan.baidu.com/s/1_974E4eZRzKubemLIQlOHA)(Code: xa8r) |
+| senet154  | [here](https://pan.baidu.com/s/1tHpFFSm2AySRjDZ4BTtboQ)(Code: kwzf) |
+
 
 ## Contact
-Thanks for your attention!
-If you have any suggestion or question, you can leave a message here or contact us directly:
-- mazhanyu@bupt.edu.cn
-- beiyoudry@bupt.edu.cn
+
 
