@@ -37,12 +37,12 @@ dropblock
 
 ## Contact
 If you find this repo useful to your project, please consider to cite it with following bib:
-'''
+```
 @article{min2021large,
   title={Large scale visual food recognition},
   author={Min, Weiqing and Wang, Zhiling and Liu, Yuxin and Luo, Mengjiang and Kang, Liping and Wei, Xiaoming and Wei, Xiaolin and Jiang, Shuqiang},
   journal={arXiv preprint arXiv:2103.16107},
   year={2021}
 }
-'''
+```
 
