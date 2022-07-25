@@ -24,9 +24,9 @@ def parse_option():
     parser.add_argument("--test_path", type=str, default="E:/datasets/food101/meta_data/test_full.txt",
                         help='path to testing list')
     parser.add_argument('--weight_path', default="E:/Pretrained_model/food2k_resnet50_0.0001.pth", help='path to the pretrained model')
-    parser.add_argument('--use_checkpoint', action='store_true', default=False,
+    parser.add_argument('--use_checkpoint', action='store_true', default=True,
                         help="whether to use gradient checkpointing to save memory")
-    parser.add_argument('--checkpoint', type=str, default=None,
+    parser.add_argument('--checkpoint', type=str, default="E:/Pretrained_model/model.pth",
                         help="the path to checkpoint")
     parser.add_argument('--output_dir', default='output', type=str, metavar='PATH',
                         help='root of output folder, the full path is <output>/<model_name>/<tag> (default: output)')
@@ -174,7 +174,7 @@ def main():
         NUM_CATEGORIES = 2000
 
 
-    net = load_model('resnet50_pmg',pretrain=False,require_grad=True,num_class=NUM_CATEGORIES)
+    net = load_model('resnet50',pretrain=False,require_grad=True,num_class=NUM_CATEGORIES)
     net.fc = nn.Linear(2048, 2000)
     state_dict = {}
     pretrained = torch.load(args.weight_path)
@@ -215,6 +215,8 @@ def main():
 
     if args.use_checkpoint:
         #net.load_state_dict(torch.load(checkpath))
+        model = torch.load(args.checkpoint).module.state_dict()
+
         net.module.load_state_dict(torch.load(args.checkpoint).module.state_dict())
         print('load the checkpoint')
 

@@ -6,9 +6,9 @@ from layer_self_attention import layer_self_attention
 from dropblock import DropBlock2D
 import numpy as np
 
-class PMG(nn.Module):
+class PRENet(nn.Module):
     def __init__(self, model, feature_size, classes_num):
-        super(PMG, self).__init__()
+        super(PRENet, self).__init__()
 
         self.features = model
 
