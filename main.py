@@ -34,6 +34,8 @@ def parse_option():
                         help="The initial learning rate for SGD.")
     parser.add_argument("--epoch", default=200, type=int,
                         help="The number of epochs.")
+    parser.add_argument("--test", action='store_true', default=True,
+                        help="Testing model.")
     args, unparsed = parser.parse_known_args()
     return args
 
@@ -150,7 +152,7 @@ def train(nb_epoch, trainloader, testloader, batch_size, store_name, start_epoch
                 epoch, train_acc, train_loss, train_loss1 / (idx + 1), train_loss2 / (idx + 1), train_loss3 / (idx + 1),
                 train_loss4 / (idx + 1)))
 
-        val_acc, val5_acc, val_acc_com, val5_acc_com, val_loss = test(net, CELoss, batch_size, testloader,useAttn)
+        val_acc, val5_acc, val_acc_com, val5_acc_com, val_loss = test(net, CELoss, batch_size, testloader,True)
         if val_acc > max_val_acc:
             max_val_acc = val_acc
             torch.save(net, './' + store_name + '/model.pth')
@@ -215,6 +217,12 @@ def main():
         #net.load_state_dict(torch.load(checkpath))
         net.module.load_state_dict(torch.load(args.checkpoint).module.state_dict())
         print('load the checkpoint')
+
+    if args.test:
+        val_acc, val5_acc, val_acc_com, val5_acc_com, val_loss = test(net, nn.CrossEntropyLoss(), args.batchsize, test_loader, True)
+        print('Accuracy of the network on the val images: top1 = %.5f, top5 = %.5f, top1_combined = %.5f, top5_combined = %.5f, test_loss = %.6f\n' % (
+                val_acc, val5_acc, val_acc_com, val5_acc_com, val_loss))
+        return
 
 
     train(nb_epoch=args.epoch,             # number of epoch
